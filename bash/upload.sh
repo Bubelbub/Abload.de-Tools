@@ -3,7 +3,7 @@
 #description	:This script uploads a image to the image hoster abload.de
 #author			:Bubelbub <bubelbub@gmail.com>
 #date			:20130412
-#version		:1.0
+#version		:1.1
 #github			:http://github.com/Bubelbub/Abload.de-Tools
 #==============================================================================
 
@@ -14,13 +14,13 @@ if [ "$1" == "" ] || [ ! -f $1 ]; then
 fi
 
 # upload the image
-RESPONSE=`curl -F "img0=@$1" http://www.abload.de/upload.php 2>&1`
+RESPONSE=`curl -F "img0=@$1" -s -b cookies.txt -c cookies.txt http://www.abload.de/upload.php`
 
 # grab the key
 KEY=`grep -Po '(?<=name="key" value=")([A-Za-z0-9]+)(?=")' <<< $RESPONSE`
 
 # get the image list in html format
-IMAGESHTML=`curl "http://www.abload.de/uploadComplete.php?key=$KEY" 2>&1`
+IMAGESHTML=`curl -s -b cookies.txt -c cookies.txt "http://www.abload.de/uploadComplete.php?key=$KEY"`
 
 # get the links in plain format
 IMAGES=`grep -Po '(?<=")http://www.abload.de/image.php\?img=([A-Za-z0-9.,% -]+)(?=")' <<< $IMAGESHTML`
