@@ -1,10 +1,10 @@
 #!/bin/bash -       
-#title           :upload.sh
-#description     :This script uploads a image to the image hoster abload.de
-#author		     :Bubelbub <bubelbub@gmail.com>
-#date            :20130412
-#version         :1.0
-#github          :http://github.com/Bubelbub/Abload.de-Tools
+#title			:upload.sh
+#description	:This script uploads a image to the image hoster abload.de
+#author			:Bubelbub <bubelbub@gmail.com>
+#date			:20130412
+#version		:1.0
+#github			:http://github.com/Bubelbub/Abload.de-Tools
 #==============================================================================
 
 # check if parameter 1 is a file
