@@ -23,7 +23,7 @@ KEY=`grep -Po '(?<=name="key" value=")([A-Za-z0-9]+)(?=")' <<< $RESPONSE`
 IMAGESHTML=`curl -s -b cookies.txt -c cookies.txt "http://www.abload.de/uploadComplete.php?key=$KEY"`
 
 # get the links in plain format
-IMAGES=`grep -Po '(?<=")http://www.abload.de/image.php\?img=([A-Za-z0-9.,% -]+)(?=")' <<< $IMAGESHTML`
+IMAGES=`grep -Po '(?<=")http://www.abload.de/image.php\?img=([A-Za-z0-9._,% -]+)(?=")' <<< $IMAGESHTML`
 
 # output the links
 echo "Uploaded images links:"
